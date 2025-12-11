@@ -1,0 +1,11 @@
+body {
+    background-image: url("./bg.jpg");
+    background-size: cover;
+}
+
+nav {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
