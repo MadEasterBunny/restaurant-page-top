@@ -3,34 +3,27 @@ import { homeContent } from "./home";
 import { menuContent } from "./menu";
 import { contactContent } from "./contact";
 
-class GenerateContent {
-    constructor(page) {
-        this.nav = document.querySelector("nav");
-        this.container = document.querySelector("#content");
-        this.page = page;
-        this.render(page);
-        this.bindEvents();
-    }
-    
-    render(page) {
-        this.container.replaceChildren();
-        this.container.appendChild(page());
-    }
+const nav = document.querySelector("nav");
+const container = document.querySelector("#content");
 
-    bindEvents() {
-        this.nav.addEventListener("click", (e) => {
-            const buttonId = e.target.id;
-            if(buttonId === "home") {
-                this.page = homeContent;
-            } else if (buttonId === "menu") {
-                this.page = menuContent;
-            } else {
-                this.page = contactContent;
-            }
-            this.render(this.page);
-        })
-    }
+const pages = {
+    home: homeContent,
+    menu: menuContent,
+    contact: contactContent,
+};
 
+const contentGenerator = (page) => {
+    container.replaceChildren();
+    container.appendChild(page());
 }
 
-const page = new GenerateContent(homeContent);
+nav.addEventListener("click", (e) => {
+    const buttonId = e.target.id;
+    for(const key in pages) {
+        if(buttonId === key) {
+            contentGenerator(pages[key]);
+        }
+    }
+});
+
+contentGenerator(pages.home);
