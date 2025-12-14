@@ -1,7 +1,7 @@
 import menuItemImg from "./menu-item.png"
 import { PageContent } from "./page";
 
-let menuHTML = "";
+let menuHTML = "<h2>Menu</h2><div>";
 
 const menuItems = [
     {
@@ -44,5 +44,7 @@ menuItems.forEach(item => {
     <p>$${item.price}</p>
     </div>`;
 });
+
+menuHTML += "</div>"
  
 export const menuContent = new PageContent("menu", menuHTML).render();
