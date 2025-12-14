@@ -1,12 +1,108 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
 body {
-    background-image: url("./bg.jpg");
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+header a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  color: #fff;
+  text-decoration: none;
+  fill: #ff3a3a;
+}
+
+header a svg {
+  max-width: 30px;
+}
+
+nav {
+  width: 230px;
+    display: flex;
+    justify-content: space-between;
+}
+  
+nav button {
+  color: #fff;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+nav button.active {
+  color: #c9c9c9;
+  text-decoration: underline;
+}
+
+nav button:hover {
+  color: #c9c9c9;
+}
+
+body {
+    position: relative;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-nav {
-    max-width: 750px;
-    margin: 0 auto;
+#content .container {
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 }

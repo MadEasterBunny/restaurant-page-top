@@ -14,16 +14,41 @@ const pages = {
 
 const contentGenerator = (page) => {
     container.replaceChildren();
-    container.appendChild(page());
+    container.appendChild(page);
 }
 
-nav.addEventListener("click", (e) => {
-    const buttonId = e.target.id;
-    for(const key in pages) {
-        if(buttonId === key) {
-            contentGenerator(pages[key]);
-        }
+const updateNavState = (buttonText, target) => {
+    const currActiveBtn = nav.querySelector(".active");
+    if(currActiveBtn) {
+        currActiveBtn.classList.remove("active");
     }
-});
+    if(target.parentNode !== nav) {
+        if(buttonText === "menu") {
+            nav.children[1].classList.add("active");
+        } else {
+            nav.children[2].classList.add("active");
+        }
+    } else {
+        target.classList.add("active");
+    }
+}
+
+const renderPageContent = (key, pages) => {
+    if(pages[key]) {
+        contentGenerator(pages[key]);
+    }
+}
+
+const handleClick = e => {
+    const target = e.target;
+    const buttonText = target.textContent.toLowerCase();
+    updateNavState(buttonText, target);
+    renderPageContent(buttonText, pages);
+}
 
 contentGenerator(pages.home);
+nav.children[0].classList.add("active");
+
+const homeBtns = document.querySelector("#homeBtns");
+nav.addEventListener("click", handleClick);
+homeBtns.addEventListener("click", handleClick);

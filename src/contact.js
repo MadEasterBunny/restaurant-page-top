@@ -1,5 +1,4 @@
-export const contactContent = () => {
-    const container = document.createElement("div");
-    container.innerHTML = `<h1>Contact</h1>`;
-    return container
-}
+import { PageContent } from "./page";
+
+const contactHTML = `<h1>Contact</h1>`;
+export const contactContent = new PageContent(contactHTML).render();
