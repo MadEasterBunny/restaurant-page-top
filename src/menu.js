@@ -1,6 +1,48 @@
+import menuItemImg from "./menu-item.png"
 import { PageContent } from "./page";
 
-//Add an object that contains the menu item content (name, description, price, image)
+let menuHTML = "";
 
-const menuHTML = `<h1>Menu</h1>`; //Add logic to make it so that the above object gets run through and displays all items
-export const menuContent = new PageContent(menuHTML).render();
+const menuItems = [
+    {
+        name: "Margherita",
+        description: "Tomato sauce, mozzaerlla, and oregano",
+        price: 8,
+        img: menuItemImg,
+    },
+    {
+        name: "Quattro Stagioni",
+        description: "Tomato sauce, mozzaerlla, mushrooms, ham, artichokes, olives, and oregano",
+        price: 10,
+        img: menuItemImg,
+    },
+    {
+        name: "Diavola",
+        description: "Tomato sauce, mozzaerlla, spicy salami, and chili pepper",
+        price: 9,
+        img: menuItemImg,
+    },
+    {
+        name: "Parmigiana",
+        description: "Tomato sauce, mozzaerlla, eggplant, and parmasan flakes",
+        price: 9,
+        img: menuItemImg,
+    },
+    {
+        name: "Frutti Di Mare",
+        description: "Tomato sauce, and seafood",
+        price: 10,
+        img: menuItemImg,
+    },
+];
+
+menuItems.forEach(item => {
+    menuHTML += `<div class="menu-item">
+    <img src="${item.img}" alt="${item.name}">
+    <h3>${item.name}</h3>
+    <p>${item.description}</p>
+    <p>$${item.price}</p>
+    </div>`;
+});
+ 
+export const menuContent = new PageContent("menu", menuHTML).render();

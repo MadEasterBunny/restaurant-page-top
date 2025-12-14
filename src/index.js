@@ -19,15 +19,16 @@ const contentGenerator = (page) => {
 
 const updateNavState = (buttonText, target) => {
     const currActiveBtn = nav.querySelector(".active");
+    const newActiveElement = Array.from(nav.children).find(child => {
+        return child.textContent.toLowerCase().trim() === buttonText;
+    });
+
     if(currActiveBtn) {
         currActiveBtn.classList.remove("active");
     }
-    if(target.parentNode !== nav) {
-        if(buttonText === "menu") {
-            nav.children[1].classList.add("active");
-        } else {
-            nav.children[2].classList.add("active");
-        }
+    
+    if (newActiveElement) {
+        newActiveElement.classList.add("active");
     } else {
         target.classList.add("active");
     }

@@ -8,4 +8,4 @@ const homeHTML = `
     <button>Contact</button>
     </div>`;
 
-export const homeContent = new PageContent(homeHTML).render();
+export const homeContent = new PageContent("home", homeHTML).render();
